@@ -1,5 +1,5 @@
-import MenuContextProvider from "@/context/MenuContext";
-import MainLayout from "./components/MainLayout";
+import MenuContextProvider from "../context/MenuContext";
+import MainLayout from "../components/MainLayout";
 import "./globals.css";
 
 export const metadata = {

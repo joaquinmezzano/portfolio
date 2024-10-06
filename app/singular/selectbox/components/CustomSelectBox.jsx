@@ -11,7 +11,7 @@ const CustomSelectBox = () => {
 
   return (
     <>
-      <div className="bg-gray-100 flex flex-col justify-center items-center w-fit relative z-30">
+      <div className="bg-gray-100 flex flex-col justify-center items-center w-fit relative z-30 rounded-lg">
         <div
           onClick={() => setOpen((prev) => !prev)}
           className="flex flex-row justify-between items-center bg-white w-48 my-2 p-2 rounded-lg cursor-pointer"
@@ -47,7 +47,7 @@ const CustomSelectBox = () => {
       </div>
       <div
         onClick={() => setOpen(false)}
-        className={`bg-gray-100 fixed inset-0 opacity-50 z-0 ${
+        className={`bg-gray-400 fixed inset-0 opacity-50 z-0 ${
           open ? "block" : "hidden"
         }`}
       ></div>

@@ -22,7 +22,7 @@ const CustomSelectBox = () => {
         <div
           className={`flex flex-col bg-white w-48 my-2 rounded-lg ${
             open ? "opacity-100 h-auto" : "opacity-0 h-0"
-          } transition-all duration-200 overflow-hidden absolute top-16 lef-0`}
+          } transition-all duration-200 overflow-hidden absolute top-16 left-0`}
         >
           {cities.map((item) => (
             <div

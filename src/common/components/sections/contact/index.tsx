@@ -33,8 +33,8 @@ export default function Contact() {
       <div className="w-[min(100%,38rem)] px-4">
         <p className="mb-20 mt-6 text-gray-700 dark:text-white/80">
           Please contact me directly at{" "}
-          <a className="underline" href="mailto:azimov.workspace@gmail.com">
-            azimov.workspace@gmail.com
+          <a className="underline" href="mailto:mezzanojoaquin@gmail.com">
+            mezzanojoaquin@gmail.com
           </a>{" "}
           or through this form.
         </p>
@@ -63,7 +63,7 @@ export default function Contact() {
           <textarea
             className="my-3 h-52 resize-none rounded-lg border bg-gray-50 p-4 transition-all dark:bg-opacity-80 dark:outline-none dark:placeholder:text-darkBg dark:focus:bg-opacity-100"
             name="message"
-            placeholder="Your message 👋"
+            placeholder="Your message"
             required
             maxLength={5000}
           />

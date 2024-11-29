@@ -1,13 +1,7 @@
 import React from 'react';
 
-import campwithusImg from '@/../public/images/camp-with-us.png';
-import carcatalogImg from '@/../public/images/car-catalog.png';
-import filedriveImg from '@/../public/images/file-drive.png';
-import projectmanagementImg from '@/../public/images/project-management.png';
-import reactfoodImg from '@/../public/images/react-food.png';
-import surgeImg from '@/../public/images/surge.png';
-import portfolioImg from '@/../public/images/portfolio.png';
-import auditMasterImg from '@/../public/images/audit-master.png';
+import cookingwithaiImg from '@/../public/images/cooking-with-ai.png';
+import f1quizandlearnImg from '@/../public/images/f1-quiz-and-learn.png';
 import {
   BookIcon,
   BriefcaseBusinessIcon,
@@ -43,135 +37,76 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: 'WhirrCrew',
-    location: 'Prague, Czechia',
-    description: `Front-end Web Develpoer position. Responsible for implementation of accessible and interactive interface. Working on various projects with AI integration. `,
+    title: 'Titulo',
+    location: 'Lugar',
+    description: `Descripcion`,
     icon: React.createElement(BriefcaseBusinessIcon),
-    date: 'Jun 2024 - Present',
+    date: 'Fecha comienzo - Fecha finalización',
   },
   {
-    title: 'NAU',
-    location: 'Kyiv, Ukraine',
-    description: `Bachelor's degree in Cybersecurity. Studying on the faculty of Cyber Security and Software Engineering.`,
+    title: 'Titulo',
+    location: 'Lugar',
+    description: `Descripcion`,
     icon: React.createElement(BookIcon),
-    date: 'Sep 2022 - Present',
+    date: 'Fecha comienzo - Fecha finalización',
   },
   {
-    title: 'Self-studying',
-    location: 'Czechia',
-    description: `Digging into Programming, Software Engineering and Web Development, picking up a great expertise in TypeScript, React, Next.js, Node.js, and database technologies (MongoDB/PostgreSQL/MySQL) utilizing Prisma for efficient data access.`,
+    title: 'Titulo',
+    location: 'Lugar',
+    description: `Descripcion`,
     icon: React.createElement(LaptopMinimalIcon),
-    date: 'Jul 2022 - Present',
+    date: 'Fecha comienzo - Fecha finalización',
   },
 ] as const;
 
 export const images = {
-  campwithusImg,
-  carcatalogImg,
-  filedriveImg,
-  projectmanagementImg,
-  reactfoodImg,
+  cookingwithaiImg,
+  f1quizandlearnImg,
 };
 
 export const projectsData = [
   {
-    title: 'FileDrive',
+    title: 'Cooking With AI',
     description:
-      'A platform for decentralized file storage with robust user management.',
+      'Descripción',
     tags: [
-      'React',
-      'TypeScript',
-      'Next.js',
-      'Convex',
-      'Clerk',
-      'Shadcn',
-      'Tailwind',
+      'Tecnologia 1',
+      'Tecnologia 2',
+      'Tecnologia 3',
     ],
-    imageUrl: filedriveImg,
-    link: 'https://github.com/bbyc4kes/file-drive',
+    imageUrl: cookingwithaiImg,
+    link: 'https://github.com/erichvollenweider/CookingWithAI',
   },
   {
-    title: 'Portfolio',
-    description: `Portfolio that you're currently viewing! This project showcases my work and provides information about me.`,
-    tags: [
-      'React',
-      'TypeScript',
-      'Next.js',
-      'Framer Motion',
-      'Cloudinary',
-      'React Email',
-      'Tailwind',
-    ],
-    imageUrl: portfolioImg,
-    link: 'https://github.com/bbyc4kes/portfolio',
-  },
-  {
-    title: 'Audit Master',
-    description: `Audit Master is a platform that streamlines the process of obtaining legal expertise and resources. It automates tasks like GAP Analysis, GAP Reporting, and Due Diligence.`,
-    tags: [
-      'React',
-      'TypeScript',
-      'Next.js',
-      'Tailwind',
-      'OpenAI',
-      'SCRUM Methodology',
-      'End-to-End Development',
-    ],
-    imageUrl: auditMasterImg,
-    link: 'https://auditmaster.ai/',
-  },
-  {
-    title: 'Surge',
+    title: 'F1 Quiz & Learn',
     description:
-      'Welcome Surge! A SaaS Website Builder - service that allows users to build and manage their own websites with integrated payment processing.',
+      'Descripción',
     tags: [
-      'React',
-      'TypeScript',
-      'Next.js',
-      'MySQL',
-      'Clerk',
-      'Stripe Connect',
-      'Shadcn',
-      'Tailwind',
+      'Tecnologia 1',
+      'Tecnologia 2',
+      'Tecnologia 3',
     ],
-    imageUrl: surgeImg,
-    link: 'https://github.com/bbyc4kes/surge',
-  },
-  {
-    title: 'CampWithUs',
-    description:
-      'A platform to find and book campsites, featuring a well-designed backend and seamless client-server communication.',
-    tags: ['JavaScript', 'Express.js', 'MongoDB', 'Cloudinary', 'EJS'],
-    imageUrl: campwithusImg,
-    link: 'https://github.com/bbyc4kes/campwithus',
+    imageUrl: f1quizandlearnImg,
+    link: 'https://github.com/brunocontii/F1-AyDS-project',
   },
 ] as const;
 
 export const skillsData = [
   ['JavaScript', '/svgs/javascript-js.svg'],
-  ['TypeScript', '/svgs/typescript-icon.svg'],
+  ['C', '/svgs/c.svg'],
+  ['Python', '/svgs/python.svg'],
+  ['Java', '/svgs/java-icon.svg'],
   ['React', '/svgs/react.svg'],
+  ['Ruby', '/svgs/ruby-lang-icon.svg'],
+  ['Haskell', '/svgs/haskell-icon.svg'],
   ['Next.js', '/svgs/nextjs.svg'],
   ['Node.js', '/svgs/node-js.svg'],
-  ['Express', '/svgs/express-original.svg'],
   ['Tailwind', '/svgs/tailwind-css.svg'],
-  ['Framer', '/svgs/framer.svg'],
-  ['Shadcn', '/svgs/shadcnui.svg'],
-  ['Headless', '/svgs/brand-headlessui.svg'],
-  ['Redux', '/svgs/redux-original.svg'],
-  ['Prisma', '/svgs/file-type-light-prisma.svg'],
-  ['MongoDB', '/svgs/mongodb-original.svg'],
   ['PostgreSQL', '/svgs/postgresql.svg'],
   ['MySQL', '/svgs/MySQL.svg'],
-  ['Tanstack Query', '/svgs/react-query-seeklogo.svg'],
-  ['Tanstack Table', '/svgs/db-table-svgrepo-com.svg'],
-  ['Cloudinary', '/svgs/cloudinary.svg'],
-  ['Docker', '/svgs/Docker.svg'],
-  ['Clerk', '/svgs/clerk.svg'],
-  ['Axios', '/svgs/axios.svg'],
+  ['Ollama', '/svgs/ollama.svg'],
   ['HTML', '/svgs/file-type-html.svg'],
   ['CSS', '/svgs/file-type-css.svg'],
-  ['Sass', '/svgs/Sass.svg'],
   ['Git', '/svgs/git.svg'],
   ['GitHub', '/svgs/github.svg'],
   ['', '/svgs/etc.svg'],

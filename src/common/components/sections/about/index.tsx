@@ -67,7 +67,7 @@ export default function About() {
             </div>
             <div className="absolute z-30 hidden lg:left-0 lg:top-1/4 lg:block">
               <div className="relative h-72 w-72 lg:h-[380px] lg:w-[380px] xl:h-[470px] xl:w-[470px]">
-                <div className="absolute inset-0 z-20 rounded-full bg-gradient-to-b from-[#ffcbb4] via-[#e0afa0] to-[#e29578] transition-opacity group-hover:opacity-60"></div>
+                <div className="absolute inset-0 z-20 rounded-full bg-gradient-to-b"></div>
                 <div className="absolute inset-0">
                   <Image
                     src={portfolioImg}

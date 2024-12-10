@@ -37,25 +37,25 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: 'Titulo',
-    location: 'Lugar',
-    description: `Descripcion`,
+    title: 'Bachiller en Economia y administración',
+    location: 'Colegio San Juan de la Cruz',
+    description: `High school diploma with a focus on economics.`,
     icon: React.createElement(BriefcaseBusinessIcon),
-    date: 'Fecha comienzo - Fecha finalización',
+    date: '2012 - 2018',
   },
   {
-    title: 'Titulo',
-    location: 'Lugar',
-    description: `Descripcion`,
+    title: 'Analista en Ciencias de la Computación',
+    location: 'Universidad Nacional de Rio Cuarto (UNRC)',
+    description: `Undergraduate's degree focused on computer science. A total of 15/18 subjects completed.`,
     icon: React.createElement(BookIcon),
-    date: 'Fecha comienzo - Fecha finalización',
+    date: 'Now',
   },
   {
-    title: 'Titulo',
-    location: 'Lugar',
-    description: `Descripcion`,
+    title: 'Licenciatura en Ciencias de la Computación',
+    location: 'Universidad Nacional de Rio Cuarto (UNRC)',
+    description: `Bachelor's degree focused on computer science. A total of 15 subjects completed.`,
     icon: React.createElement(LaptopMinimalIcon),
-    date: 'Fecha comienzo - Fecha finalización',
+    date: 'Now',
   },
 ] as const;
 
@@ -68,11 +68,12 @@ export const projectsData = [
   {
     title: 'Cooking With AI',
     description:
-      'Descripción',
+      'Cooking With AI uses artificial intelligence to analyze images of food ingredients, identify them, and generate recipes based on them. It makes meal planning easier and helps reduce food waste!',
     tags: [
-      'Tecnologia 1',
-      'Tecnologia 2',
-      'Tecnologia 3',
+      'Ollama',
+      'Python',
+      'Flask',
+      'React',
     ],
     imageUrl: cookingwithaiImg,
     link: 'https://github.com/erichvollenweider/CookingWithAI',
@@ -80,11 +81,11 @@ export const projectsData = [
   {
     title: 'F1 Quiz & Learn',
     description:
-      'Descripción',
+      'Web trivia application designed for Formula 1 fans and enthusiasts. This question-and-answer game tests your knowledge of F1 history, drivers, teams, circuits, and key events.',
     tags: [
-      'Tecnologia 1',
-      'Tecnologia 2',
-      'Tecnologia 3',
+      'SQL',
+      'Ruby',
+      'JavaScript',
     ],
     imageUrl: f1quizandlearnImg,
     link: 'https://github.com/brunocontii/F1-AyDS-project',

@@ -44,10 +44,10 @@ export default function About() {
             <div className="text-md relative z-40 flex flex-col gap-3 font-semibold tracking-wide text-primary lg:absolute lg:right-0 lg:top-[27%] lg:block lg:max-w-[580px] lg:text-start lg:text-lg xl:top-1/3 xl:h-[442px] xl:max-w-[650px]">
               <div className="flex h-full flex-col justify-center gap-6">
                 <span>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum, atque iure, quas placeat quam officiis delectus similique natus odit cum quidem. Laboriosam doloribus incidunt eveniet harum assumenda veniam a natus!
+                  I am a passionate computer science student, deeply in love with technology and programming. I excel in teamwork, fostering collaboration and creativity in every project.
                 </span>
                 <span>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit dicta, accusantium ipsa possimus nostrum recusandae. Voluptas officia doloribus beatae nulla sunt totam quod, architecto, odit similique, ipsum aperiam id ut?
+                  My innate curiosity drives me to constantly explore new horizons, always seeking knowledge and challenges that spark my interest. Learning something new is not just a goal; it’s an adventure I thoroughly enjoy.
                 </span>
                 <p className="flex flex-col items-start sm:items-center lg:items-start">
                   <span>So if you are interested,</span>

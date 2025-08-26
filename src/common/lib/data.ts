@@ -37,25 +37,25 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: 'Bachiller en Economia y administración',
+    title: 'High School Diploma in Economics and Management',
     location: 'Colegio San Juan de la Cruz',
     description: `High school diploma with a focus on economics.`,
     icon: React.createElement(BriefcaseBusinessIcon),
-    date: '2012 - 2018',
+    date: '2012-2018',
   },
   {
-    title: 'Analista en Ciencias de la Computación',
+    title: 'Computer Science Analyst',
     location: 'Universidad Nacional de Rio Cuarto (UNRC)',
-    description: `Undergraduate's degree focused on computer science. A total of 15/18 subjects completed.`,
+    description: `Developed strong foundations in programming, databases, algorithms, computer architecture, and operating systems`,
     icon: React.createElement(BookIcon),
-    date: 'Now',
+    date: '2021-2025',
   },
   {
-    title: 'Licenciatura en Ciencias de la Computación',
+    title: 'Bachelor’s Degree in Computer Science',
     location: 'Universidad Nacional de Rio Cuarto (UNRC)',
-    description: `Bachelor's degree focused on computer science. A total of 15 subjects completed.`,
+    description: `Currently focusing on computation theory, optimization, artificial intelligence, and advanced software development.`,
     icon: React.createElement(LaptopMinimalIcon),
-    date: 'Now',
+    date: '2021-PRESENT',
   },
 ] as const;
 

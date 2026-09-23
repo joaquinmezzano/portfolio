@@ -1,77 +1,117 @@
-"use client";
+'use client';
 
-import React from "react";
-import { motion } from "framer-motion";
-import { useSectionInView } from "@/common/lib/hooks";
-import SubmitBtn from "./_components/submit-btn";
-import SectionHeading from "@/common/components/shared/section-heading";
-import toast from "react-hot-toast";
-import { sendEmail } from "@/common/utils/actions/send-email";
+import toast from 'react-hot-toast';
+
+import Reveal from '@/common/components/shared/reveal';
+import { siteMeta } from '@/common/lib/data';
+import { useSectionInView } from '@/common/lib/hooks';
+import { sendEmail } from '@/common/utils/actions/send-email';
+
+import SubmitBtn from './_components/submit-btn';
 
 export default function Contact() {
-  const { ref } = useSectionInView("contact");
+  const { ref } = useSectionInView('contact');
 
   return (
-    <motion.section
-      id="contact"
-      ref={ref}
-      className="flex w-full scroll-mt-12 flex-col items-center py-20 pb-44 text-center dark:bg-darkBg dark:text-white"
-      initial={{
-        opacity: 0.8,
-      }}
-      whileInView={{
-        opacity: 1,
-      }}
-      transition={{
-        duration: 0.5,
-      }}
-      viewport={{
-        once: true,
-      }}
-    >
-      <SectionHeading>Hit me up!</SectionHeading>
-      <div className="w-[min(100%,38rem)] px-4">
-        <p className="mb-20 mt-6 text-gray-700 dark:text-white/80">
-          Please contact me directly at{" "}
-          <a className="underline" href="mailto:mezzanojoaquin@gmail.com">
-            mezzanojoaquin@gmail.com
-          </a>{" "}
-          or through this form.
-        </p>
+    <section id="contact" ref={ref} className="page-section scroll-mt-20">
+      <div className="page-wrap">
+        <div className="grid gap-12 md:grid-cols-12 md:gap-10">
+          <Reveal className="md:col-span-5">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-silk">
+              ## 05 · contact
+            </p>
+            <h2 className="mt-6 font-display text-4xl font-semibold tracking-tight text-ink md:text-5xl">
+              Send a note
+            </h2>
+            <p className="mt-5 max-w-sm leading-relaxed text-silk">
+              Hiring for an internship or a junior role, or just want to talk
+              code? I read everything I get. The form goes straight to my inbox.
+            </p>
 
-        <form
-          className="mt-10 flex flex-col dark:text-black"
-          action={async (formData) => {
-            const { error } = await sendEmail(formData);
+            <dl className="mt-8 border-t border-rule font-mono text-sm">
+              <div className="flex gap-4 border-b border-rule py-3">
+                <dt className="shrink-0 text-silk">email</dt>
+                <dd className="text-ink">{siteMeta.email}</dd>
+              </div>
+              <div className="flex gap-4 border-b border-rule py-3">
+                <dt className="shrink-0 text-silk">github</dt>
+                <dd>
+                  <a
+                    href={siteMeta.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-signal underline decoration-signal/40 underline-offset-4 transition-colors hover:decoration-signal"
+                  >
+                    @joaquinmezzano ↗
+                  </a>
+                </dd>
+              </div>
+              <div className="flex gap-4 border-b border-rule py-3">
+                <dt className="shrink-0 text-silk">cv</dt>
+                <dd>
+                  <a
+                    href={siteMeta.cv}
+                    download
+                    className="text-ink underline decoration-silk/40 underline-offset-4 transition-colors hover:decoration-ink"
+                  >
+                    download pdf ↓
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </Reveal>
 
-            if (error) {
-              toast.error(error);
-              return;
-            }
+          <Reveal delay={0.05} className="md:col-span-7">
+            <form
+              className="flex flex-col"
+              action={async (formData) => {
+                const { error } = await sendEmail(formData);
 
-            toast.success("Email sent successfully!");
-          }}
-        >
-          <input
-            className="h-14 rounded-lg border bg-gray-50 px-4 transition-all dark:bg-white dark:bg-opacity-80 dark:placeholder:text-darkBg dark:focus:bg-opacity-100"
-            name="senderEmail"
-            type="email"
-            required
-            maxLength={500}
-            placeholder="Your email"
-          />
-          <textarea
-            className="my-3 h-52 resize-none rounded-lg border bg-gray-50 p-4 transition-all dark:bg-opacity-80 dark:outline-none dark:placeholder:text-darkBg dark:focus:bg-opacity-100"
-            name="message"
-            placeholder="Your message"
-            required
-            maxLength={5000}
-          />
-          <div className="flex justify-center">
-            <SubmitBtn />
-          </div>
-        </form>
+                if (error) {
+                  toast.error(error);
+                  return;
+                }
+
+                toast.success('Email sent successfully!');
+              }}
+            >
+              <label
+                htmlFor="senderEmail"
+                className="font-mono text-xs uppercase tracking-[0.18em] text-silk"
+              >
+                your email
+              </label>
+              <input
+                id="senderEmail"
+                name="senderEmail"
+                type="email"
+                required
+                maxLength={500}
+                placeholder="you@example.com"
+                className="mt-2 border-b border-rule bg-transparent py-3 font-body text-lg text-ink outline-none transition-colors placeholder:text-silk/60 focus:border-signal"
+              />
+              <label
+                htmlFor="message"
+                className="mt-10 font-mono text-xs uppercase tracking-[0.18em] text-silk"
+              >
+                your message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                maxLength={5000}
+                rows={6}
+                placeholder="What are you building?"
+                className="mt-2 resize-none border-b border-rule bg-transparent py-3 font-body text-lg text-ink outline-none transition-colors placeholder:text-silk/60 focus:border-signal"
+              />
+              <div className="mt-10">
+                <SubmitBtn />
+              </div>
+            </form>
+          </Reveal>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

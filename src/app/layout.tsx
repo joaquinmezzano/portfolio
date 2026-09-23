@@ -1,22 +1,42 @@
 import type { Metadata } from 'next';
-import { Montserrat as FontMontserrat } from 'next/font/google';
-import { cn } from '@/common/lib/utils';
-import '@/common/styles/globals.css';
+
+import {
+  Archivo as FontArchivo,
+  Instrument_Sans as FontInstrumentSans,
+  JetBrains_Mono as FontJetBrainsMono,
+} from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
+
+import Footer from '@/common/components/shared/footer';
+import Header from '@/common/components/shared/header';
+import { cn } from '@/common/lib/utils';
 import ActiveSectionContextProvider from '@/common/stores/active-section';
 import { ThemeProvider } from '@/common/theme/theme-provider';
-import Header from '@/common/components/shared/header';
-import Footer from '@/common/components/shared/footer';
-import { ModeToggle } from '@/common/theme/mode-toggler';
+
+import '@/common/styles/globals.css';
 
 export const metadata: Metadata = {
-  title: 'Joaquin Mezzano Portfolio',
+  title: 'Joaquin Mezzano — Backend Developer',
   description:
-    'Built using TypeScript, Next.js 14, Framaer Motion and Tailwind CSS. Clonned from Maksym Azimov portfolio repository.',
+    'Backend-focused developer (Java, SQL, Python) and recent Computer Science Analyst from UNRC. AI-integrated full-stack projects: RAG, LLMs, computer vision.',
 };
 
-const fontMontserrat = FontMontserrat({
+const fontArchivo = FontArchivo({
   subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  variable: '--font-display',
+});
+
+const fontInstrumentSans = FontInstrumentSans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-body',
+});
+
+const fontJetBrainsMono = FontJetBrainsMono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-mono',
 });
 
 export default function RootLayout({
@@ -25,31 +45,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body
-        className={cn(
-          'relative flex items-center justify-center',
-          fontMontserrat.className,
-        )}
-      >
-        <div className="flex min-h-screen w-full flex-col">
-          <ActiveSectionContextProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <Header />
-              {children}
-              <Footer />
-              <div className="fixed left-1 right-auto top-1 z-[99] sm:bottom-6 sm:left-6 sm:top-auto">
-                <ModeToggle />
-              </div>
-              <Toaster position="top-right" />
-            </ThemeProvider>
-          </ActiveSectionContextProvider>
-        </div>
+    <html
+      lang="en"
+      className={cn(
+        fontArchivo.variable,
+        fontInstrumentSans.variable,
+        fontJetBrainsMono.variable,
+      )}
+      suppressHydrationWarning
+    >
+      <body className="scroll-smooth">
+        <ActiveSectionContextProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            {children}
+            <Footer />
+            <Toaster position="bottom-right" />
+          </ThemeProvider>
+        </ActiveSectionContextProvider>
       </body>
     </html>
   );

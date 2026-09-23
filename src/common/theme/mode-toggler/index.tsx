@@ -1,33 +1,33 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
-import { Button } from "@/common/components/ui";
-import { useHasMounted } from "@/common/lib/hooks";
+import { cn } from '@/common/lib/utils';
 
 export function ModeToggle() {
   const { setTheme, theme } = useTheme();
-  const hasMounted = useHasMounted();
+  const [mounted, setMounted] = useState(false);
 
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  if (!hasMounted) return null;
+  if (!mounted) return null;
+
+  const isDark = theme === 'dark';
 
   return (
-    <Button
-      className="bg-transparent p-0 text-gray-700 opacity-80 dark:text-white"
-      size={"sm"}
-      onClick={toggleTheme}
-    >
-      {theme === "light" ? (
-        <Sun className="h-4 w-4" />
-      ) : (
-        <Moon className="h-4 w-4" />
+    <button
+      type="button"
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      aria-label="Toggle color theme"
+      className={cn(
+        'font-mono text-[0.68rem] uppercase tracking-[0.18em] transition-colors',
+        'text-silk hover:text-ink',
       )}
-    </Button>
+    >
+      {isDark ? '[dark]' : '[light]'}
+    </button>
   );
 }

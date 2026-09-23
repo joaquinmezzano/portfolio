@@ -1,111 +1,108 @@
-"use client";
+'use client';
 
-import "next-cloudinary/dist/cld-video-player.css";
-import SectionDivider from "@/common/components/shared/section-divider";
-import TextAnimation from "./_components/text-animation";
-import { useSectionInView } from "@/common/lib/hooks";
-import { useActiveSectionContext } from "@/common/stores/active-section";
-import { smoothScrollTo } from "@/common/lib/utils";
-import { motion } from "framer-motion";
-import { Linkedin } from "lucide-react";
-import Image from "next/image";
+import Reveal from '@/common/components/shared/reveal';
+import { siteMeta } from '@/common/lib/data';
+import { useSectionInView } from '@/common/lib/hooks';
+
+const manifestRows = [
+  { label: 'name', value: siteMeta.name.toLowerCase() },
+  { label: 'based', value: siteMeta.basedOn },
+  { label: 'studying', value: siteMeta.studying },
+  { label: 'languages', value: siteMeta.languages },
+];
 
 export default function Hero() {
-  const { ref } = useSectionInView("home");
-  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
+  const { ref } = useSectionInView('home', 0.3);
 
   return (
-    <>
-      <section
-        className="relative flex h-screen w-full scroll-mt-36 flex-col items-center justify-center"
-        id="home"
-        ref={ref}
-      >
-        <div
-          className={
-            "absolute left-0 top-0 h-screen w-full dark:bg-[#0000007c]"
-          }
-        ></div>
-        <video
-          width="480"
-          height="720"
-          preload="none"
-          autoPlay
-          crossOrigin="anonymous"
-          muted
-          loop
-          className="absolute -z-10 h-screen w-screen object-cover"
-        >
-          <source src="/layout.mp4" />
-        </video>
-        <div className="container flex flex-col items-start justify-center tracking-wide text-black dark:text-white">
-          <div className="container relative flex h-full w-full flex-col items-center">
-            <div className="h-72 w-[280px] text-center text-[2rem] font-extrabold sm:w-[520px] md:w-[700px] lg:mb-5 lg:w-[920px] lg:text-[3rem]">
-              <motion.span
-                initial={{ y: -100, x: "-50%", opacity: 0 }}
-                animate={{ y: 0, x: "-50%", opacity: 1 }}
-                className="mb-10 text-start font-extrabold"
-              >
-                Hey!
-              </motion.span>
-              <br />
-              <TextAnimation delay={1} baseText={`Im Joaquin`} />
-            </div>
-            <motion.div
-              className="w-92 flex flex-col items-center justify-center gap-3 px-4 text-sm font-medium md:mt-12 md:flex-row lg:text-lg"
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.1,
-              }}
-            >
-              <a
-                className="group flex w-64 cursor-pointer items-center justify-center gap-2 rounded-full bg-darkBg px-7 py-3 text-white outline-none transition hover:bg-lightBeige hover:text-black hover:dark:text-black sm:w-auto"
-                onClick={(e) => {
-                  smoothScrollTo({ e, id: "contact" });
-                  setActiveSection("contact");
-                  setTimeOfLastClick(Date.now());
-                }}
-              >
-                <span>Contact me</span>
-              </a>
-
-              <a
-                className="borderBlack group flex w-64 cursor-pointer items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-black outline-none transition hover:bg-gray-100 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 sm:w-auto"
-                href="/CV_Joaquin_Mezzano.pdf"
-                download
-              >
-                <span>Download CV</span>
-              </a>
-
-              <div className="flex gap-2">
-                <a
-                  className="borderBlack flex h-[50px] w-[50px] cursor-pointer items-center justify-center gap-2 rounded-full bg-white p-2 text-black transition hover:bg-gray-100 hover:text-gray-950 dark:bg-white/10 dark:text-white/60 dark:hover:bg-white/20"
-                  href="https://www.linkedin.com/in/joaquin-mezzano/"
-                  target="_blank"
-                >
-                  <Linkedin />
-                </a>
-                <a
-                  className="borderBlack flex h-[50px] w-[50px] cursor-pointer items-center justify-center gap-2 rounded-full bg-white p-2 text-gray-700 transition hover:bg-gray-100 hover:text-gray-950 dark:bg-white/10 dark:text-white/60 dark:hover:bg-white/20"
-                  href="https://github.com/joaquinmezzano"
-                  target="_blank"
-                >
-                  <Image
-                    width={25}
-                    height={25}
-                    src={"/svgs/github.svg"}
-                    alt="github icon"
-                  />
-                </a>
-              </div>
-            </motion.div>
+    <section
+      id="home"
+      ref={ref}
+      className="flex min-h-screen flex-col justify-center scroll-mt-24 py-24"
+    >
+      <div className="page-wrap">
+        <Reveal>
+          <div className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-signal"></span>
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-silk">
+              status — {siteMeta.status}
+            </p>
           </div>
-        </div>
-      </section>
-      <div className="flex w-full justify-center dark:bg-darkBg">
-        <SectionDivider />
+        </Reveal>
+
+        <Reveal delay={0.05}>
+          <h1 className="mt-10 font-display text-[3.25rem] font-semibold leading-[0.95] tracking-tight text-ink sm:text-7xl md:text-8xl">
+            Joaquin
+            <br />
+            Mezzano.
+          </h1>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <p className="mt-8 max-w-xl text-lg leading-relaxed text-silk md:text-xl">
+            Backend-focused developer and recent Computer Science Analyst
+            (UNRC), finishing a B.Sc. I build with Java, SQL and Python — and I
+            ship full-stack projects that talk to LLMs and computer vision
+            models.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.15}>
+          <dl className="mt-14 border-t border-rule">
+            {manifestRows.map((row) => (
+              <div
+                key={row.label}
+                className="grid grid-cols-[7rem_1fr] gap-4 border-b border-rule py-3 font-mono text-sm sm:grid-cols-[10rem_1fr]"
+              >
+                <dt className="text-silk">{row.label}</dt>
+                <dd className="text-ink">{row.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <ul className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-sm">
+            <li>
+              <a
+                href={`mailto:${siteMeta.email}`}
+                className="text-signal underline decoration-signal/40 underline-offset-4 transition-colors hover:decoration-signal"
+              >
+                email ↗
+              </a>
+            </li>
+            <li>
+              <a
+                href={siteMeta.github}
+                target="_blank"
+                rel="noreferrer"
+                className="text-signal underline decoration-signal/40 underline-offset-4 transition-colors hover:decoration-signal"
+              >
+                github ↗
+              </a>
+            </li>
+            <li>
+              <a
+                href={siteMeta.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="text-signal underline decoration-signal/40 underline-offset-4 transition-colors hover:decoration-signal"
+              >
+                linkedin ↗
+              </a>
+            </li>
+            <li>
+              <a
+                href={siteMeta.cv}
+                download
+                className="text-silk underline decoration-silk/40 underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
+              >
+                download cv ↓
+              </a>
+            </li>
+          </ul>
+        </Reveal>
       </div>
-    </>
+    </section>
   );
 }

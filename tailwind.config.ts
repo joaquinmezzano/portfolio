@@ -19,12 +19,13 @@ const config = {
     },
     extend: {
       colors: {
-        lightBlue: "#8db7fc",
-        darkBlue: "#60a5fa",
-        darkBg: "#0a0908",
-        darkBeige: "#ddbea9",
-        darkOcean: "#22333B",
-        lightBeige: "#ffcbb4",
+        paper: "hsl(var(--paper))",
+        ink: "hsl(var(--ink))",
+        silk: "hsl(var(--silk))",
+        rule: "hsl(var(--rule))",
+        wash: "hsl(var(--wash))",
+        signal: "hsl(var(--signal))",
+        "signal-wash": "hsl(var(--signal-wash))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -58,6 +59,11 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      fontFamily: {
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",

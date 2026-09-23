@@ -1,59 +1,72 @@
-"use client";
+'use client';
 
-import { links } from "@/common/lib/data";
-import { smoothScrollTo } from "@/common/lib/utils";
-import { useActiveSectionContext } from "@/common/stores/active-section";
-import { motion } from "framer-motion";
-import Link from "next/link";
+import Link from 'next/link';
+
+import { links, siteMeta } from '@/common/lib/data';
+import { smoothScrollTo } from '@/common/lib/utils';
+import { cn } from '@/common/lib/utils';
+import { useActiveSectionContext } from '@/common/stores/active-section';
+import { ModeToggle } from '@/common/theme/mode-toggler';
 
 export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSectionContext();
 
   return (
-    <header className="relative z-[99]">
-      <motion.div
-        className="fixed left-1/2 top-0 h-[4.5rem] w-full rounded-none border border-[#f4f3ee] border-opacity-40 bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem] md:w-[41rem] md:rounded-full"
-        initial={{ y: -100, x: "-50%", opacity: 0 }}
-        animate={{ y: 0, x: "-50%", opacity: 1 }}
-      ></motion.div>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-rule bg-paper/90 backdrop-blur-sm">
+      <div className="page-wrap flex h-16 items-center justify-between gap-4">
+        <Link
+          href="#home"
+          onClick={(e) => {
+            smoothScrollTo({ e, id: 'home' });
+            setActiveSection('home');
+            setTimeOfLastClick(Date.now());
+          }}
+          className="font-mono text-sm font-medium text-ink"
+        >
+          ~/{siteMeta.name.toLowerCase().split(' ').join('')}
+        </Link>
 
-      <nav className="fixed left-1/2 top-[0.15rem] flex h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0">
-        <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-2 text-[0.9rem] font-medium transition-colors sm:w-[initial] sm:flex-nowrap sm:gap-5">
-          {links.map((link) => (
-            <motion.li
-              className="relative flex h-3/4 items-center justify-center text-black dark:text-white"
-              key={link.id}
-              initial={{ y: -100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-            >
-              <Link
-                className="flex w-full items-center justify-center px-3 py-3 uppercase transition"
-                href={link.id}
-                onClick={(e) => {
-                  smoothScrollTo({ e, id: link.id });
-                  setActiveSection(link.id);
-                  setTimeOfLastClick(Date.now());
-                }}
-              >
-                {link.name}
+        <nav>
+          <ul className="hidden items-center gap-6 sm:flex">
+            {links.map((link) => (
+              <li key={link.id}>
+                <Link
+                  href={link.id}
+                  onClick={(e) => {
+                    smoothScrollTo({ e, id: link.id });
+                    setActiveSection(link.id);
+                    setTimeOfLastClick(Date.now());
+                  }}
+                  className={cn(
+                    'font-mono text-[0.68rem] uppercase tracking-[0.18em] transition-colors',
+                    activeSection === link.id
+                      ? 'text-ink'
+                      : 'text-silk hover:text-ink',
+                  )}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-                {link.id === activeSection && (
-                  <motion.span
-                    className="absolute inset-0 -z-10 rounded-full bg-[#ffcbb4] dark:bg-[#ddbea9]"
-                    layoutId="activeSection"
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 30,
-                    }}
-                  ></motion.span>
-                )}
-              </Link>
-            </motion.li>
-          ))}
-        </ul>
-      </nav>
+        <div className="flex items-center gap-4">
+          <Link
+            href="#contact"
+            onClick={(e) => {
+              smoothScrollTo({ e, id: 'contact' });
+              setActiveSection('contact');
+              setTimeOfLastClick(Date.now());
+            }}
+            className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-signal sm:hidden"
+          >
+            contact
+          </Link>
+          <ModeToggle />
+        </div>
+      </div>
     </header>
   );
 }

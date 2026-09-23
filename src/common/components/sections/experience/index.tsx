@@ -1,69 +1,45 @@
 'use client';
 
-import React from 'react';
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from 'react-vertical-timeline-component';
-import 'react-vertical-timeline-component/style.min.css';
-import { useTheme } from 'next-themes';
-import { useHasMounted, useSectionInView } from '@/common/lib/hooks';
-import SectionHeading from '@/common/components/shared/section-heading';
+import Reveal from '@/common/components/shared/reveal';
+import SectionHeader from '@/common/components/shared/section-header';
 import { experiencesData } from '@/common/lib/data';
-import SectionDivider from '@/common/components/shared/section-divider';
+import { useSectionInView } from '@/common/lib/hooks';
 
 export default function Experience() {
   const { ref } = useSectionInView('experience');
-  const { theme } = useTheme();
-  const ihasMounted = useHasMounted();
 
   return (
-    <section
-      id="experience"
-      ref={ref}
-      className="w-full scroll-mt-20 dark:bg-darkBg dark:text-white"
-    >
-      <SectionHeading>My experience</SectionHeading>
-      <VerticalTimeline animate={false}>
-        {ihasMounted &&
-          experiencesData.map((item, index) => (
-            <React.Fragment key={index}>
-              <VerticalTimelineElement
-                contentStyle={{
-                  background:
-                    theme === 'light' ? '#f3f4f6' : 'rgba(255, 255, 255, 0.05)',
-                  boxShadow: 'none',
-                  border: '1px solid rgba(0, 0, 0, 0.05)',
-                  textAlign: 'left',
-                  padding: '1.3rem 2rem',
-                }}
-                contentArrowStyle={{
-                  borderRight:
-                    theme === 'light'
-                      ? '0.4rem solid #9ca3af'
-                      : '0.4rem solid rgba(255, 255, 255, 0.5)',
-                  display: theme === 'dark' ? 'none' : 'block',
-                }}
-                date={item.date}
-                icon={item.icon}
-                iconStyle={{
-                  background:
-                    theme === 'light' ? '#fff' : 'rgba(255, 255, 255, 0.15)',
-                  fontSize: '1.5rem',
-                  display: theme === 'dark' ? 'none' : 'flex',
-                }}
+    <section id="experience" ref={ref} className="page-section scroll-mt-20">
+      <div className="page-wrap">
+        <Reveal>
+          <SectionHeader
+            index="03"
+            title="Education"
+            intro="The formal path: theory first, then the habit of building with it."
+          />
+        </Reveal>
+
+        <Reveal delay={0.05}>
+          <ul className="mt-16 border-t border-rule">
+            {experiencesData.map((item) => (
+              <li
+                key={item.title}
+                className="grid gap-2 border-b border-rule py-7 md:grid-cols-12 md:gap-8"
               >
-                <h3 className="font-semibold capitalize">{item.title}</h3>
-                <p className="!mt-0 font-normal">{item.location}</p>
-                <p className="!mt-1 !font-normal text-gray-700 dark:text-white/75">
-                  {item.description}
-                </p>
-              </VerticalTimelineElement>
-            </React.Fragment>
-          ))}
-      </VerticalTimeline>
-      <div className="flex w-full justify-center dark:bg-darkBg">
-        <SectionDivider />
+                <span className="font-mono text-xs uppercase tracking-[0.18em] text-silk md:col-span-2">
+                  {item.date}
+                </span>
+                <div className="md:col-span-5">
+                  <h3 className="font-display text-xl font-semibold tracking-tight text-ink">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-silk">{item.location}</p>
+                </div>
+                <p className="text-silk md:col-span-5">{item.description}</p>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );

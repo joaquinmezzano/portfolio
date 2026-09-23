@@ -1,66 +1,71 @@
-'use client';
-
-import { useRef } from 'react';
-import { projectsData } from '@/common/lib/data';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Link from 'next/link';
 
-type ProjectProps = (typeof projectsData)[number];
+import { projectsData } from '@/common/lib/data';
+import { cn } from '@/common/lib/utils';
+
+type Project = (typeof projectsData)[number];
 
 export default function Project({
-  title,
-  description,
-  tags,
-  imageUrl,
-  link,
-}: ProjectProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['0 1', '1.33 1'],
-  });
-  const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) {
+  const even = index % 2 === 1;
 
   return (
-    <motion.div
-      ref={ref}
-      style={{
-        scale: scaleProgess,
-        opacity: opacityProgess,
-      }}
-      className="group mb-3 last:mb-0 sm:mb-8"
-    >
-      <Link href={link} target="_blank">
-        <section
-          className={
-            'relative max-w-[52rem] overflow-hidden rounded-lg border transition hover:bg-gray-200 dark:hover:bg-primary-foreground sm:h-[20rem]'
-          }
-        >
-          <div className="flex h-full flex-col px-5 pb-7 pt-4 sm:max-w-[50%] sm:pl-10 sm:pr-2 sm:pt-10 sm:group-even:ml-[18rem]">
-            <h3 className="text-2xl font-semibold uppercase"> {title}</h3>
-            <p className="mt-2 leading-relaxed">{description}</p>
-            <ul className="mt-4 flex flex-wrap gap-2 sm:mt-auto">
-              {tags.map((tag, index) => (
-                <li
-                  className="rounded-full bg-[#ffcbb4] px-3 py-1 text-[0.7rem] uppercase tracking-wider dark:bg-[#ddbea9] dark:text-black"
-                  key={index}
-                >
-                  {tag}
-                </li>
-              ))}
-            </ul>
-          </div>
+    <div className="grid gap-8 border-t border-rule pt-10 md:grid-cols-12 md:gap-10">
+      <div className={cn('md:col-span-7', even && 'md:order-2')}>
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-silk">
+          0{index + 1} · {project.role}
+        </p>
+        <h3 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+          {project.title}
+        </h3>
+        <p className="mt-5 max-w-lg leading-relaxed text-silk">
+          {project.description}
+        </p>
 
+        <dl className="mt-8 max-w-lg font-mono text-sm">
+          <div className="flex gap-4 border-t border-rule py-3">
+            <dt className="shrink-0 text-silk">stack</dt>
+            <dd className="text-ink">{project.stack.join(' · ')}</dd>
+          </div>
+          <div className="flex gap-4 border-b border-rule py-3">
+            <dt className="shrink-0 text-silk">repo</dt>
+            <dd>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noreferrer"
+                className="text-signal underline decoration-signal/40 underline-offset-4 transition-colors hover:decoration-signal"
+              >
+                repository ↗
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <div className={cn('md:col-span-5', even && 'md:order-1')}>
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noreferrer"
+          className="group block border border-rule bg-wash"
+        >
           <Image
-            src={imageUrl}
-            alt="Project I worked on"
-            quality={95}
-            className="absolute -right-40 top-8 hidden w-[28.25rem] rounded-t-lg transition group-even:-left-40 group-even:right-[initial] group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2 group-hover:scale-[1.04] group-even:group-hover:translate-x-3 group-even:group-hover:translate-y-3 group-even:group-hover:rotate-2 sm:block"
+            src={project.imageUrl}
+            alt={`${project.title} interface`}
+            sizes="(min-width: 768px) 42vw, 92vw"
+            className="aspect-[4/3] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
           />
-        </section>
-      </Link>
-    </motion.div>
+        </a>
+        <p className="mt-3 font-mono text-xs uppercase tracking-[0.18em] text-silk">
+          scr. 0{index + 1} — {project.title.toLowerCase().replaceAll(' ', '-')}
+        </p>
+      </div>
+    </div>
   );
 }
